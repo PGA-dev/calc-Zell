@@ -1,0 +1,20 @@
+{
+  "name": "calculator4",
+  "version": "1.0.0",
+  "description": "calculatorfromzlbuild",
+  "main": "index.html",
+  "scripts": {
+    "lite": "lite-server",
+    "sass-dev": "sass --watch --update --style=expanded scss:css",
+    "sass-prod": "sass --no-source-map --style=compressed scss:css",
+    "compileSass": "sass calculator.scss calculator.css --style=compressed --embed-sources",
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PGA",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "sass": "^1.71.1"
+  }
+}
