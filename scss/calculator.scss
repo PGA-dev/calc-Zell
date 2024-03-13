@@ -136,11 +136,12 @@ html {
     box-shadow: .1em .1em 1em 1em rgba(0, 0, 0, 0.3);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 15em;
+    margin-bottom: 5em;
     max-width: 15em;
     overflow-x: hidden;
     overflow-y: clip;
+    border: .3em solid grey;
   }
   
   .calculator__display {
@@ -149,6 +150,7 @@ html {
     font-size: 1.714285714em;
     padding: 0.5em 0.75em;
     text-align: right;
+    border: .1em solid grey;
   }
   
   .calculator__keys {
@@ -167,7 +169,7 @@ html {
   
   .calculator__keys > *:active::before,
   .calculator__keys > .is-depressed::before {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     bottom: 0;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
     content: "";

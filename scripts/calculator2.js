@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
     keys.addEventListener('click', e => {
+        //Pure Function
+        const resultString = createResultString()
+
+        //Impure functions
+        display.textContent = resultString
+        updateCalculatorState()
         if (e.target.matches('button')) {
             const key = e.target
             const action = key.dataset.action
