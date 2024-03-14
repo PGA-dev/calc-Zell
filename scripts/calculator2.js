@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //Create string for calc results
     const createResultString = (key, displayedNum, state) => {
         const keyType = getKeyType(key)
-        calculator.dataset.previousKeyType = keyType
         const keyContent = key.textContent
         const { firstValue, modValue, operator, previousKeyType } = state
         if (keyType === 'number') {
@@ -65,21 +64,73 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     //Impure functions
-    display.textContent = resultString
-    updateCalculatorState()
 
-    keys.addEventListener('click', e => {
-        if (e.target.matches('button')) return
-        const displayedNum = display.textContent
-        const resultString = createResultString(
-            e.target,
-            displayedNum,
-            calculator.dataset
+    const updateCalculatorState = (key,
+        calculator,
+        calculatedValue,
+        displayedNum) => {
+        const keyType = getKeyType(key)
+        calculator.dataset.previousKeyType = keyType
+        if (keyType === 'operator') {
+            calculator.dataset.operator = key.dataset.action
+            calculator.dataset.firstValue =
+            calculator.dataset.firstValue &&
+            calculator.dataset.operator &&
+            calculator.dataset.previousKeyType !== 'operator' &&
+            calculator.dataset.previousKeyType !== 'calculate'
+                    ? calculatedValue
+                    : displayedNum
+        }
+        if (keyType === 'clear') {
+            if (key.textContent === 'AC') {
+                calculator.dataset.firstValue = ''
+                calculator.dataset.modValue = ''
+                calculator.dataset.operator = ''
+                calculator.dataset.previousKeyType = ''
+            }
+        }
+
+        if (keyType === 'calculate') {
+            calculator.dataset.modValue =
+            calculator.dataset.firstValue && calculator.dataset.previousKeyType === 'calculate' ? calculator.dataset.modValue : displayedNum
+        }
+    }
+
+
+
+    const updateVisualState = (key, calculator) => {
+        const keyType = getKeyType(key)
+        Array.from(key.parentNode.children).forEach(k =>
+            k.classList.remove('is-depressed')
         )
 
+        if (keyType === 'operator') key.classList.add('is-depressed')
+
+        if (keyType === 'clear' && key.textContent !== 'AC') {
+            key.textContent = 'AC'
+        }
+
+        if (keyType !== 'clear') {
+            const clearButton = calculator.querySelector('[data-action=clear]')
+            clearButton.textContent = 'CE'
+        }
+    }
+
+
+    keys.addEventListener('click', e => {
+        if (!e.target.matches('button')) return
+        const key = e.target
+        const displayedNum = display.textContent
+
+        // Pure functions
+        const resultString = createResultString(key, displayedNum, calculator.dataset)
+
+        // Update states
+        display.textContent = resultString
+        updateCalculatorState(key, calculator, resultString, displayedNum)
+        updateVisualState(key, calculator)
     })
 
 
 
-
-
+})
