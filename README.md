@@ -19,6 +19,16 @@ Liew had us create a refactored separation of concerns for the calculator functi
 - I had to change part of the state calculation to get the final refactor to work
 - Originally this was a [codepen](https://codepen.io/zellwk/pen/pLgmGL) by Zell Liew, I modded it for Node.js using NPM and set SCSS watch/compile/update settings to use with liveserver
 
+### Time 
+- Initial calculator (parts 1-2)
+    - 2-4 hours
+- Refactor (section 3)
+    - 1-2 hours
+- Setup/modification
+    - 30-45 minutes
 
+## Screenshot
+
+![calculator](Calc.png)
 
 
