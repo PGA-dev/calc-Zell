@@ -129,8 +129,5 @@ document.addEventListener("DOMContentLoaded", function () {
         display.textContent = resultString
         updateCalculatorState(key, calculator, resultString, displayedNum)
         updateVisualState(key, calculator)
-    })
-
-
-
-})
+    });
+});

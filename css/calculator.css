@@ -98,6 +98,12 @@ button:focus {
 
 :root {
   font-family: Helvetica, Arial, sans-serif;
+  --body-bg: rgba(0, 0, 0, 1);
+  --color-text: rgba(255, 255, 255, 1);
+  --color-link: rgba(100, 255, 0, 0.9);
+  --color-primary: rgba(0, 0, 255, 1);
+  --color-secondary: rgba(255, 0, 0, 1);
+  --color-accent: rgba(0, 255, 0, 1);
 }
 
 html {
@@ -108,14 +114,17 @@ html {
 
 body {
   align-items: center;
-  background-image: linear-gradient(236deg, #74ebd5, #acb6e5);
+  background-image: rgb(0, 0, 0);
   display: flex;
   height: 100vh;
   justify-content: center;
 }
 
 .container {
-  max-width: 20em;
+  background: var(--body-bg);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 10%, var(--body-bg) 15%, var(--color-primary) 20%, var(--body-bg) 31%, var(--body-bg) 40%, var(--color-primary) 84%, var(--body-bg) 85%, var(--body-bg) 85%, var(--color-primary) 95%, var(--color-primary) 100%);
+  min-width: 40em;
+  max-width: 50em;
 }
 
 .container > p {
@@ -136,8 +145,8 @@ body {
 }
 
 .calculator__display {
-  background-color: #222222;
-  color: #fff;
+  background-color: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
   font-size: 1.714285714em;
   padding: 0.5em 0.75em;
   text-align: right;
@@ -152,7 +161,7 @@ body {
 }
 
 .calculator__keys > * {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   padding: 0.5em 1.25em;
   position: relative;
   text-align: center;
@@ -177,7 +186,7 @@ body {
 }
 
 .key--equal {
-  background-image: linear-gradient(to bottom, #fe886a, #ff7033);
+  background-image: linear-gradient(to bottom, rgb(155, 112, 51), rgb(0, 136, 106), rgb(155, 112, 51));
   grid-column: -2;
   grid-row: 2/span 4;
 }
